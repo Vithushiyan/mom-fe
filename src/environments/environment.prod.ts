@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://pretty-cups-backend.onrender.com'
+  apiUrl: 'https://mom-be.onrender.com'
 };
