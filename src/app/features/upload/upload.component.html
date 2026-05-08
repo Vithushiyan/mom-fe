@@ -1,0 +1,129 @@
+<div class="upload-page">
+  <!-- Loading Overlay -->
+  @if (isUploading || isGenerating) {
+    <div class="loading-overlay">
+      <p-progressSpinner strokeWidth="4" animationDuration="1s"></p-progressSpinner>
+      <p class="loading-text">
+        @if (isUploading) {
+          Uploading your photo...
+        } @else {
+          Creating your masterpiece...
+        }
+      </p>
+      <div class="loading-hearts">
+        <span>💕</span>
+        <span>💗</span>
+        <span>💕</span>
+      </div>
+    </div>
+  }
+
+  <div class="upload-content">
+    <a routerLink="/" class="back-link">
+      <i class="pi pi-arrow-left"></i>
+      Back
+    </a>
+
+    <div class="header">
+      <h1>Create Your Memory</h1>
+      <p>Upload a photo and choose a style to create something beautiful</p>
+    </div>
+
+    <!-- Error Message -->
+    @if (errorMessage) {
+      <div class="error-message">
+        <i class="pi pi-exclamation-circle"></i>
+        {{ errorMessage }}
+      </div>
+    }
+
+    <!-- File Upload Section -->
+    <div class="upload-section">
+      <h3>1. Upload Photo</h3>
+
+      @if (!imagePreview) {
+        <div
+          class="drop-zone"
+          (drop)="onDrop($event)"
+          (dragover)="onDragOver($event)"
+          (click)="triggerFileInput()"
+        >
+          <input
+            #fileInput
+            type="file"
+            accept="image/*"
+            (change)="onFileSelect($event)"
+            hidden
+          />
+          <div class="drop-content">
+            <i class="pi pi-cloud-upload"></i>
+            <p class="drop-text">Drop your photo here or click to browse</p>
+            <p class="drop-hint">Supports JPG, PNG, WebP (max 10MB)</p>
+          </div>
+        </div>
+      } @else {
+        <div class="preview-container">
+          <img [src]="imagePreview" alt="Preview" class="image-preview" />
+          <button
+            pButton
+            type="button"
+            icon="pi pi-times"
+            class="remove-button p-button-rounded p-button-danger"
+            (click)="removeImage()"
+          ></button>
+        </div>
+      }
+    </div>
+
+    <!-- Mother's Name Section -->
+    <div class="name-section">
+      <h3>2. Mother's Name</h3>
+      <span class="p-input-icon-left full-width">
+        <i class="pi pi-heart"></i>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="motherName"
+          placeholder="Enter her name..."
+          class="name-input"
+          maxlength="50"
+        />
+      </span>
+    </div>
+
+    <!-- Style Selection Section -->
+    <div class="style-section">
+      <h3>3. Choose Style</h3>
+      <div class="style-grid">
+        @for (style of styleOptions; track style.value) {
+          <div
+            class="style-card"
+            [class.selected]="selectedStyle?.value === style.value"
+            (click)="selectedStyle = style"
+          >
+            <span class="style-icon">{{ style.icon }}</span>
+            <span class="style-label">{{ style.label }}</span>
+            <span class="style-description">{{ style.description }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Generate Button -->
+    <div class="action-section">
+      <button
+        pButton
+        class="generate-button"
+        [disabled]="!canGenerate() || isUploading || isGenerating"
+        (click)="generateMemory()"
+        label="Generate Memory"
+        icon="pi pi-sparkles"
+      ></button>
+    </div>
+
+    <footer class="footer">
+      <p class="solution-by">Solution by Pretty Solutions (PVT) Ltd</p>
+      <p class="copyright">&copy; {{ currentYear }} Pretty Cups. All rights reserved.</p>
+    </footer>
+  </div>
+</div>

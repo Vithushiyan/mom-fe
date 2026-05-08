@@ -1,0 +1,88 @@
+<div class="result-page">
+  <p-toast></p-toast>
+
+  @if (resultData) {
+    <div class="result-content">
+      <div class="header">
+        <h1>Your Memory is Ready!</h1>
+        <p>A beautiful tribute to {{ resultData.motherName }}</p>
+      </div>
+
+      <div class="image-frame">
+        <div class="frame-decoration top-left">🌸</div>
+        <div class="frame-decoration top-right">🌺</div>
+        <div class="frame-decoration bottom-left">🌷</div>
+        <div class="frame-decoration bottom-right">💮</div>
+
+        <img
+          [src]="resultData.generatedImage"
+          [alt]="'Mother\'s Day memory for ' + resultData.motherName"
+          class="generated-image"
+        />
+      </div>
+
+      <div class="style-badge">
+        <span>Style: {{ resultData.style }}</span>
+      </div>
+
+      <div class="action-buttons">
+        <button
+          pButton
+          class="download-btn"
+          (click)="downloadImage()"
+          icon="pi pi-download"
+          label="Download"
+        ></button>
+
+        @if (canNativeShare) {
+          <button
+            pButton
+            class="share-btn"
+            (click)="shareImage()"
+            icon="pi pi-share-alt"
+            label="Share"
+          ></button>
+        }
+      </div>
+
+      <div class="social-share">
+        <p>Share directly to:</p>
+        <div class="social-icons">
+          <button
+            pButton
+            class="social-btn whatsapp"
+            (click)="shareToWhatsApp()"
+            title="Share on WhatsApp"
+          >
+            <i class="pi pi-whatsapp"></i>
+          </button>
+
+          <button
+            pButton
+            class="social-btn instagram"
+            (click)="copyToClipboard()"
+            title="Copy for Instagram"
+          >
+            <i class="pi pi-instagram"></i>
+          </button>
+        </div>
+        <p class="instagram-hint">
+          <i class="pi pi-info-circle"></i>
+          For Instagram: Copy and paste in your story or post
+        </p>
+      </div>
+
+      <div class="create-another">
+        <a routerLink="/upload" class="create-link">
+          <i class="pi pi-plus-circle"></i>
+          Create Another Memory
+        </a>
+      </div>
+
+      <footer class="footer">
+        <p class="solution-by">Solution by Pretty Solutions (PVT) Ltd</p>
+        <p class="copyright">&copy; {{ currentYear }} Pretty Cups. All rights reserved.</p>
+      </footer>
+    </div>
+  }
+</div>

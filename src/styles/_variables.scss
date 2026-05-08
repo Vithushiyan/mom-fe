@@ -1,0 +1,50 @@
+// Pretty Cups Theme Variables
+
+// Primary Colors
+$pink-primary: #FFB6C1;
+$pink-light: #FFC0CB;
+$pink-dark: #FF69B4;
+$pink-accent: #FF1493;
+
+// Neutral Colors
+$white: #FFFFFF;
+$cream: #FFF8F0;
+$cream-dark: #FFEEDD;
+
+// Text Colors
+$text-primary: #4A4A4A;
+$text-secondary: #6B6B6B;
+$text-light: #8B8B8B;
+
+// Gradients
+$gradient-primary: linear-gradient(135deg, $pink-light 0%, $pink-primary 50%, $cream 100%);
+$gradient-soft: linear-gradient(180deg, $cream 0%, $pink-light 100%);
+$gradient-hero: linear-gradient(135deg, #FFF5F7 0%, #FFE4E8 50%, #FFF0F3 100%);
+
+// Shadows
+$shadow-soft: 0 4px 20px rgba(255, 105, 180, 0.15);
+$shadow-card: 0 8px 32px rgba(255, 182, 193, 0.2);
+$shadow-button: 0 4px 15px rgba(255, 105, 180, 0.3);
+
+// Border Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$radius-xl: 30px;
+$radius-full: 50%;
+
+// Typography
+$font-decorative: 'Dancing Script', cursive;
+$font-body: 'Poppins', sans-serif;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+// Animation
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
