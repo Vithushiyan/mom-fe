@@ -56,12 +56,6 @@ export class UploadComponent {
       value: 'luxury',
       icon: '✨',
       description: 'Gold accents and elegance'
-    },
-    {
-      label: 'Vintage Classic',
-      value: 'vintage',
-      icon: '🖼️',
-      description: 'Timeless nostalgic charm'
     }
   ];
 
